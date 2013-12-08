@@ -2,7 +2,9 @@ body {
     font-size: 16pt;
 }
 input {
-    font-size: 2.3rem;
+    font-size: 2.3rem !important;
+    line-height:2.4rem !important;
+    height: 50px !important;
     border: none;
     width: 40%;
 }
@@ -18,7 +20,6 @@ ul,li {
     font-weight: bold;
     border: 1px solid #E8190C;
     background-color: #FF3500;
-    padding: 5px;
     font-family: "Helvetica";
     font-size: 1rem;
 }
