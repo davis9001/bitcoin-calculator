@@ -1,0 +1,28 @@
+body {
+    font-size: 16pt;
+}
+input {
+    font-size: 2.3rem;
+    border: none;
+    width: 40%;
+}
+ul,li {
+    margin:0;
+    padding:0;
+    list-style: none;
+    list-style-type: none;
+}
+
+.important {
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 1px solid #E8190C;
+    background-color: #FF3500;
+    padding: 5px;
+    font-family: "Helvetica";
+    font-size: 1rem;
+}
+
+.info {
+    color: #FF0D53;
+}

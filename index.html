@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Bitcoin Calcumalator</title>
+            <link rel="stylesheet" href="style.css">
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+    </head>
+    <body>
+        <ul>
+            <li>
+                <label for="bitcoin">BTC</label> <input type="text" name="bitcoin">
+                <!-- <label for="megabitcoin">MBTC</label> <input type="text" name="megabitcoin"> -->
+                <label for="millibitcoin">mBTC</label> <input type="text" name="millibitcoin">
+            </li>
+            <li>
+                <label for="microbitcoin">μBTC</label> <input type="text" name="microbitcoin">
+                <label for="usdollar">USD</label> <input type="text" name="usdollar">                
+            </li>
+        </ul>
+        
+        <p class="important">This is for testing purposes, this information may not be considered financial advice and the creator(s) may not be held liable for any losses resulting in the use of this data.</p>
+
+        <p class="info">USD pricing data provided by Coinbase realtime public API on Firebase: <a href="https://www.firebase.com/blog/2013-10-25-btcquote-bitcoin-price-ticker.html">https://www.firebase.com/blog/2013-10-25-btcquote-bitcoin-price-ticker.html</a>. Data is auto-updated (no refresh needed).</p>
+
+        <script src="script.js"></script>
+    </body>
+</html>
