@@ -4,11 +4,10 @@
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Bitcoin Calculator</title>
-            <link rel="stylesheet" href="foundation-5.0.2/normalize.css">
+            <link rel="stylesheet" href="foundation-5.0.2/css/normalize.css">
             <link rel="stylesheet" href="foundation-5.0.2/css/foundation.min.css">
             <link rel="stylesheet" href="style.css">
-            <script type='text/javascript' src="foundation-5.0.2/js/foundation.min.js"></script>
-            <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type='text/javascript' src='foundation-5.0.2/js/vendor/custom.modernizr.js'></script>
             <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
     </head>
     <body>
@@ -17,24 +16,32 @@
             <h5>Easily compute amounts between Bitcoin, Megabitcoin, Millibitcoin, and USD (according to Coinbase).</h5>
         </div>
         <div class="row">
-                <ul>
-                    <li>
-                        <label for="bitcoin">Bitcoin (BTC)</label> <input type="text" name="bitcoin">
-                        <!-- <label for="megabitcoin">MBTC</label> <input type="text" name="megabitcoin"> -->
-                        <label for="millibitcoin">Megabitcoin (mBTC)</label> <input type="text" name="millibitcoin">
-                    </li>
-                    <li>
-                        <label for="microbitcoin">Millibitcoin (μBTC)</label> <input type="text" name="microbitcoin">
-                        <label for="usdollar">United States dollar (US$)</label> <input type="text" name="usdollar">                
-                    </li>
-                </ul>
-                
-                <div data-alert class="alert-box important">This is for testing purposes, this information may not be considered financial advice and the creator(s) may not be held liable for any losses resulting in the use of this data.</div>
+            <fieldset>
+                <label for="bitcoin">Bitcoin (BTC)</label> <input id="bitcoin" type="text" name="bitcoin"/>
+                <!-- <label for="megabitcoin">MBTC</label> <input type="text" name="megabitcoin"> -->
+                <label for="millibitcoin">Megabitcoin (mBTC)</label> <input id="millibitcoin" type="text" name="millibitcoin"/>
+                <label for="microbitcoin">Millibitcoin (μBTC)</label> <input id="microbitcoin" type="text" name="microbitcoin"/>
+                <label for="usdollar">United States dollar (US$)</label> <input id="usdollar" type="text" name="usdollar"/>
+            </fieldset>
 
-                <div data-alert class="alert-box info radius">USD pricing data provided by Coinbase realtime public API on Firebase: <a href="https://www.firebase.com/blog/2013-10-25-btcquote-bitcoin-price-ticker.html">https://www.firebase.com/blog/2013-10-25-btcquote-bitcoin-price-ticker.html</a>. Data is auto-updated (no refresh needed).</div>
+            <div data-alert class="alert-box important">
+                This is for testing purposes, this information may not be considered financial advice and the creator(s) may not be held liable for any losses resulting in the use of this data.
+                <a href="#" class="close">&times;</a>
+            </div>
 
-                <a class="coinbase-button" data-code="42df90df1ebf0690d1c828e398d55154" data-button-style="donation_large" href="https://coinbase.com/checkouts/42df90df1ebf0690d1c828e398d55154">Donate Bitcoins</a><script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
+            <div data-alert class="alert-box info radius">
+                USD pricing data provided by Coinbase realtime public API on Firebase: <a href="https://www.firebase.com/blog/2013-10-25-btcquote-bitcoin-price-ticker.html">https://www.firebase.com/blog/2013-10-25-btcquote-bitcoin-price-ticker.html</a>. Data is auto-updated (no refresh needed).
+                <a href="#" class="close">&times;</a>
+            </div>
+
+            <a class="coinbase-button" data-code="42df90df1ebf0690d1c828e398d55154" data-button-style="donation_large" href="https://coinbase.com/checkouts/42df90df1ebf0690d1c828e398d55154">Donate Bitcoins</a>
+            <script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
         </div>
-        <script src="script.js"></script>
+        <script type='text/javascript' src="foundation-5.0.2/js/vendor/jquery.js"></script>
+        <script type='text/javascript' src="foundation-5.0.2/js/vendor/jquery.cookie.js"></script>
+        <script type='text/javascript' src="foundation-5.0.2/js/foundation/foundation.js"></script>
+        <script type='text/javascript' src="foundation-5.0.2/js/foundation/foundation.alert.js"></script>
+        <script type='text/javascript'>    $(document).foundation(); </script>
+        <script type='text/javascript' src="script.js"></script>
     </body>
 </html>

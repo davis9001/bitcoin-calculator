@@ -122,4 +122,8 @@ $(document).ready(function() {
         document.lastUpdatedField = 'usdollar';
         return true;
     }
+    $(document).on('close.fndtn.alert-box', function(event) {
+      alert('An alert box has been closed!');
+    });
 });
+
