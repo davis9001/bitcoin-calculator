@@ -1,34 +1,24 @@
 $(document).ready(function() {
     var ref = new Firebase("https://publicdata-bitcoin.firebaseio.com/");
-    ref.child("bid").on("value", setPrices);
-    ref.child("ask").on("value", setPrices);
+    
+    ref.child("last").on("value", setUSDRate);
 
     document.bid = 0;
     document.ask = 0;
     document.averagePrice = 0;
     document.lastUpdatedField = '';
 
-    function setPrices(snapshot) {
-        if (snapshot.name() === 'bid') {
-            document.bid = Number(snapshot.val());
-        }
-        if (snapshot.name() === 'ask') {
-            document.ask = Number(snapshot.val());
-        }
-        if (document.ask !== 0 && document.bid !== 0) {
-            var sum = document.bid + document.ask;
-            var average = sum/2;
-            document.averagePrice = Number(average);
-            last = document.lastUpdatedField;
-            if (last === '' || last === 'bitcoin') {
-                calculateFromBitcoin();
-            } else if (last === 'megabitcoin') {
-                calculateFromMegaBitcoin();
-            } else if (last === 'millibitcoin') {
-                calculateFromMilliBitcoin();
-            } else if (last === 'usdollar') {
-                calculateFromUSDollar();
-            }
+    function setUSDRate(snapshot) {
+        document.lastPrice = snapshot.val();
+        last = document.lastUpdatedField;
+        if (last === '' || last === 'bitcoin') {
+            calculateFromBitcoin();
+        } else if (last === 'megabitcoin') {
+            calculateFromMegaBitcoin();
+        } else if (last === 'millibitcoin') {
+            calculateFromMilliBitcoin();
+        } else if (last === 'usdollar') {
+            calculateFromUSDollar();
         }
     }
 
@@ -77,9 +67,9 @@ $(document).ready(function() {
         if          (name === 'bitcoin') {
             $('input[name='+name+']').val(value.toFixed(8));
         } else if   (name === 'microbitcoin') {
-            $('input[name='+name+']').val(value.toFixed(7));
+            $('input[name='+name+']').val(value.toFixed(8));
         } else if   (name === 'millibitcoin') {
-            $('input[name='+name+']').val(value.toFixed(5));
+            $('input[name='+name+']').val(value.toFixed(8));
         } else if   (name === 'usdollar') {
             $('input[name='+name+']').val(value.toFixed(2));
         }
@@ -87,7 +77,7 @@ $(document).ready(function() {
 
     function calculateFromBitcoin() {
         bitcoin = $('input[name=bitcoin]').val();
-        usdrate = document.averagePrice;
+        usdrate = document.lastPrice;
 
         updateField('millibitcoin', bitcoin*1000);
         updateField('microbitcoin', bitcoin*1000000);
@@ -99,7 +89,7 @@ $(document).ready(function() {
     function calculateFromMilliBitcoin() {
         millibitcoin = $('input[name=millibitcoin]').val();
         bitcoin = millibitcoin/1000;
-        usdrate = document.averagePrice;
+        usdrate = document.lastPrice;
         
         updateField('bitcoin', bitcoin);
         updateField('microbitcoin', bitcoin*1000000);
@@ -111,7 +101,7 @@ $(document).ready(function() {
     function calculateFromMicroBitcoin() {
         microbitcoin = $('input[name=microbitcoin]').val();
         bitcoin = microbitcoin/1000000;
-        usdrate = document.averagePrice;
+        usdrate = document.lastPrice;
         
         updateField('bitcoin', bitcoin);
         updateField('millibitcoin', bitcoin/1000);
@@ -122,7 +112,7 @@ $(document).ready(function() {
     }
     function calculateFromUSDollar() {
         usd = $('input[name=usdollar]').val();
-        usdrate = document.averagePrice;
+        usdrate = document.lastPrice;
         bitcoin = usd/usdrate;
 
         updateField('microbitcoin', bitcoin*1000000);
