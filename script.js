@@ -7,8 +7,17 @@ $(document).ready(function() {
     document.ask = 0;
     document.averagePrice = 0;
     document.lastUpdatedField = '';
+    document.lastDirectionWasUp = '';
+    document.lastPrice = '';
 
     function setUSDRate(snapshot) {
+        if (document.lastPrice !== '') {
+            if (snapshot.val() > document.lastPrice) {
+                document.lastDirectionWasUp = true;
+            } else {
+                document.lastDirectionWasUp = false;
+            }
+        }
         document.lastPrice = snapshot.val();
         last = document.lastUpdatedField;
         if (last === '' || last === 'bitcoin') {
@@ -19,6 +28,9 @@ $(document).ready(function() {
             calculateFromMilliBitcoin();
         } else if (last === 'usdollar') {
             calculateFromUSDollar();
+        }
+        if (document.lastDirectionWasUp !== '') {
+            flashFields();
         }
     }
 
@@ -121,6 +133,21 @@ $(document).ready(function() {
 
         document.lastUpdatedField = 'usdollar';
         return true;
+    }
+
+    function flashFields() {
+        $('.refreshable').each(function() {
+            $(this).stop(true, true);
+            $(this).animate({opacity: 0.2}, 100, function() {
+                if (document.lastDirectionWasUp) {
+                    $(this).css('color', 'green');
+                } else {
+                    $(this).css('color', 'red');
+                }
+            }).animate({opacity:1}, 300, function() {
+                $(this).css('color', 'black');
+            });
+        });
     }
     $(document).on('close.fndtn.alert-box', function(event) {
       alert('An alert box has been closed!');

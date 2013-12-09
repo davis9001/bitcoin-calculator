@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Bitcoin Calculator</title>
+            <link rel="stylesheet" href="../foundation-5.0.2/css/normalize.css">
+            <link rel="stylesheet" href="../foundation-5.0.2/css/foundation.min.css">
+            <link rel="stylesheet" href="style.css">
+            <script type='text/javascript' src='../foundation-5.0.2/js/vendor/custom.modernizr.js'></script>
+            <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+    </head>
+    <body>
+        <div class="row">
+            <div>
+                <h1>Bitcoin according to Coinbase</h1>
+                <h3 class="animateMyRefresh">1BTC = $<span id="usdvalueinbtc"></span> USD</h3>
+                <h3 class="animateMyRefresh">1mBTC = $<span id="usdvalueinmbtc"></span> USD</h3>
+                <h3 class="animateMyRefresh">1μBTC = $<span id="usdvalueinubtc"></span> USD</h3>
+            </div>
+        </div>
+
+        <script type='text/javascript' src="../foundation-5.0.2/js/vendor/jquery.js"></script>
+        <script type='text/javascript' src="../foundation-5.0.2/js/vendor/jquery.cookie.js"></script>
+        <script type='text/javascript' src="../foundation-5.0.2/js/foundation/foundation.js"></script>
+        <script type='text/javascript' src="../foundation-5.0.2/js/foundation/foundation.alert.js"></script>
+        <script type='text/javascript'>    $(document).foundation(); </script>
+        <script type='text/javascript' src='script.js'></script>
+
+        <script type='text/javascript'>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46300601-1', 'iwantdavid.github.io');
+          ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
